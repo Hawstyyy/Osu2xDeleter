@@ -2,17 +2,26 @@ import os
 import shutil as sh
 from tkinter import *
 from tkinter import filedialog
+import tkinter as tk
+
+def select_pasta():
+  path = filedialog.askdirectory()
+
+# def apagar_2x():
+#   for arquivo in os.walk(path):
+#     if "@2x" in arquivo:
+#       print(arquivo)
+#       os.remove(f'{path}/{arquivo}')
 
 name = []
 root = Tk()
-root.withdraw()
-path = filedialog.askdirectory()
+root.title('Osu @2x Deleter')
+root.geometry('400x200')
+root.resizable(height=False, width=False)
 
-for arquivo in os.listdir(path):
-  name.append(arquivo)
-
-print(name[1])
-
-for arquivo in name:
-  if ".png" in arquivo:
-    print(arquivo)
+button_path = tk.Button(root,
+text='Select your folder',
+command=select_pasta
+)
+button_path.grid(padx=50,pady=100)
+root.mainloop()
