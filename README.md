@@ -1,2 +1,2 @@
-# Osu Animation Deleter
+# Osu @2x Deleter
  
