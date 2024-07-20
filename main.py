@@ -1,38 +1,28 @@
 import os
-import shutil as sh
-from tkinter import *
 from tkinter import filedialog
-import tkinter as tk
+import time
 
-def select_path():
-  global path
+while True:
   path = filedialog.askdirectory()
 
-def apagar_2x():
-  global path
+  print(f'- Diretório Selecionado: {os.path.dirname(path)}')
+  print('Os seguintes arquivos serão excluídos: ')
+
   for arquivo in os.listdir(path):
     if "@2x" in arquivo:
       print(arquivo)
-      os.remove(f'{path}/{arquivo}')
 
-name = []
-root = Tk()
-root.title('Osu @2x Deleter')
-root.geometry('400x200')
-root.resizable(height=False, width=False)
+  choice = input("Deixa mesmo continuar? (S/N) ").capitalize()
 
-button_path = tk.Button(root,
-text='Select your folder',
-command=select_path,
-font=("Arial Bold", 12),
-)
+  if choice not in ['N','S']:
+    print('Escolha inválida')
 
-button_apagar = tk.Button(root,
-text='Delete',
-command=apagar_2x,
-font=("Arial Bold", 12),
-)
+  elif choice == 'S':
+    for arquivo in os.listdir(path):
+      if "@2x" in arquivo:
+        os.remove(f'{path}/{arquivo}')
 
-button_path.pack(side = LEFT)
-button_apagar.pack(side = RIGHT)
-root.mainloop()
+  elif choice == 'N':
+    print('Cancelando...')
+    time.sleep(2)
+    break
