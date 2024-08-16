@@ -33,9 +33,8 @@ def menu():
     top.geometry("400x200")
     top.resizable(False, False)
     Label(top, text= f" {len(arquivos)} arquivos serão excluídos, tem certeza?", font=("Arial", 10, "bold")).place(relx=0.5, rely=0.4, anchor=CENTER)
+    Button(top, text= "Sim", command=top.destroy, font=("Arial", 12)).place(relx=0.4, rely=0.7, anchor=CENTER)
     Button(top, text= "Cancelar", command=top.destroy, font=("Arial", 12)).place(relx=0.6, rely=0.7, anchor=CENTER)
-
-    print('Cancelando...')
 
 root = Tk()
 
